@@ -26,8 +26,12 @@
         .card img {
             width: 100%;
             height: auto;
+            border-radius: 10px; 
+            object-fit: cover; 
             border-radius: 10px;
-        }
+            }
+            
+        
 
         .title {
             text-align: center;
