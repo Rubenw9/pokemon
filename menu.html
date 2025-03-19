@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>🍽️ Pokémon Restaurant Menu</title>
+  <style>
+  
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000000;
+      padding: 20px;
+      color: #333;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;  
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #e60012;
+    }
+
+    .menu-section {
+      margin-bottom: 15px;
+      border: 2px solid #eee;
+      border-radius: 12px;
+      background-color: #fff;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .menu-header {
+      background-color: #ffcb05;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      color: #3b4cca;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-items {
+      display: none;
+      padding: 15px 20px;
+    }
+
+    .item {
+      margin: 8px 0;
+      font-size: 16px;
+    }
+
+    .combo-name {
+      font-weight: bold;
+      color: #333
+    }
+
+    
+    footer {
+      background-color: #333;
+      color: #eee;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: auto;  
+    }
+
+    
+    .button-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1; 
+      text-align: center;
+    }
+
+    button {
+      background-color: #ffcb05;
+      color: #333;
+      font-size: 18px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #333;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>🍔 Pokéstop Menu</h1>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🥗 Pokébowls</div>
+    <div class="menu-items">
+      <div class="item">⚡ <strong>Pikabowl</strong> – kip, mango, mais, avocado</div>
+      <div class="item">🌿 <strong>Bulbabowl</strong> – tofu, komkommer, edamame</div>
+      <div class="item">🔥 <strong>Charibowl</strong> – pittige zalm, paprika, ui</div>
+      <div class="item">💧 <strong>Squirtle Bowl</strong> – garnalen, ananas, limoen</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🌯 Wraps</div>
+    <div class="menu-items">
+      <div class="item">🐥 <strong>Torchic Wrap</strong> – krokante kip, spicy saus</div>
+      <div class="item">😴 <strong>Snorlax Wrap</strong> – kip, rijst, avocado</div>
+      <div class="item">🧠 <strong>Mewtwo Wrap</strong> – vegan met falafel & hummus</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🍟 Snacks</div>
+    <div class="menu-items">
+      <div class="item">🌀 <strong>Psyduck Friet</strong> – met kaassaus</div>
+      <div class="item">👻 <strong>Gengar Gyoza</strong> – kip of groente dumplings</div>
+      <div class="item">🥚 <strong>Togepi Nuggets</strong> – kip met dipsaus</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🥤 Dranken</div>
+    <div class="menu-items">
+      <div class="item">🎀 <strong>Jigglypuff Bubble Tea</strong> – aardbei</div>
+      <div class="item">🌊 <strong>Vaporeon Ijsthee</strong> – blauwe bessen</div>
+      <div class="item">🔥 <strong>Charmander Limo</strong> – sinaasappel & chili</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🍨 Toetjes</div>
+    <div class="menu-items">
+      <div class="item">🍦 <strong>Vanillite IJsje</strong> – softijs met topping</div>
+      <div class="item">🔴 <strong>Pokéball Donut</strong> – rood-witte donut</div>
+    </div>
+  </div>
+
+  <div class="menu-section">
+    <div class="menu-header" onclick="toggleMenu(this)">🍱 Combo Menu's</div>
+    <div class="menu-items">
+      <div class="item"><strong>🔴 Pokéball Combo:</strong> Torchic Wrap + Psyduck Friet + Jigglypuff Bubble Tea + Pokéball Donut</div>
+      <div class="item"><strong>⚡ Pikachu Combo:</strong> Pikabowl + Vaporeon Ijsthee + Vanillite IJsje</div>
+      <div class="item"><strong>🔥 Charmander Combo:</strong> Charibowl + Psyduck Friet + Charmander Limo</div>
+      <div class="item"><strong>🌿 Bulbasaur Combo:</strong> Bulbabowl + Vaporeon Ijsthee + Pokéball Donut</div>
+      <div class="item"><strong>🎀 Jiggly Kids Combo:</strong> Togepi Nuggets + Psyduck Friet + Jigglypuff Bubble Tea + Pokémon Verrassing</div>
+    </div>
+  </div>
+
+  <div class="button-section">
+    <button type="button" onclick="showMessage()">Roep een medewerker!</button>
+  </div>
+
+  <footer>
+    &copy; 2025 Pokéstop Restaurant | Alle rechten voorbehouden
+  </footer>
+
+  <script>
+    function toggleMenu(header) {
+      const content = header.nextElementSibling;
+      content.style.display = content.style.display === "block" ? "none" : "block";
+    }
+
+    function showMessage() {
+      alert("Een medewerker wordt naar je toe gestuurd!");
+    }
+  </script>
+
+</body>
+</html>
