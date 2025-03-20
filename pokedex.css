@@ -1,11 +1,11 @@
 :root {
-    --identity-primary: #dc0a2d;
+    --identity-primary: #000000;
   
     --grayscale-dark: #212121;
     --grayscale-medium: #666666;
     --grayscale-light: #e0e0e0;
     --grayscale-background: #efefef;
-    --grayscale-white: #ffffff;
+    --grayscale-white: #dad75f;
   
     --headline-font-size: 24px;
     --body1-font-size: 14px;
