@@ -2,7 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <title>Contact - Pokéstop</title>
+  <title>Contact - Urban Eats & Spirits</title>
   <style>
     body {
       margin: 0;
@@ -11,18 +11,18 @@
       color: #333;
     }
 
-    .contact-container {
+    .form-container {
       max-width: 600px;
-      margin: 50px auto;
+      margin: 30px auto;
       background-color: #ffcb05;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
-    h1 {
+    h1, h2 {
       text-align: center;
-      color: #e60012;
+      color: #000000;
     }
 
     p {
@@ -30,40 +30,129 @@
       font-size: 16px;
     }
 
-    footer {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      align-self: flex-start;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 90%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background-color: #000000;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 15px 40px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
       background-color: #333;
       color: white;
       text-align: center;
       padding: 10px;
-      margin-top: 40px;
     }
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #333;
-  color: white;
-  text-align: center;
-}
-</style>
-
-<div class="footer">
-  <p>2025 Pokéstop. Alle rechten voorbehouden.<p>
-</div>
-
   </style>
 </head>
 <body>
 
-  <div class="contact-container">
-    <h1>📍 Contact</h1>
-    <p><strong>Adres:</strong> Pokéstraat 123, 1010 AB Amsterdam</p>
-    <p><strong>E-mail:</strong> info@pokestoprestaurant.nl</p>
+  <div class="form-container">
+    <h1>📍 Contactgegevens</h1>
+    <p><strong>Adres:</strong> Pokéstraat 123, 1010 AB Maastricht</p>
+    <p><strong>E-mail:</strong> info@urbaneats.nl</p>
     <p><strong>Telefoon:</strong> 06-12345678</p>
     <p><strong>Openingstijden:</strong> Ma t/m Zo - 12:00 tot 21:00</p>
   </div>
+
+  <div class="form-container">
+    <h2>👤 Contactformulier</h2>
+    <form>
+      <label for="fname">E-mail:</label>
+      <input type="text" id="fname" name="fname" placeholder="r.willems@vistacollege.nl">
+
+      <label for="lname">Bericht:</label>
+      <input type="text" id="lname" name="lname" placeholder="Groen en geel zijn mooie kleuren!">
+
+      <button type="button" onclick="alert('Je formulier is verzonden!')">Verzend</button>
+    </form>
+  </div>
+
+  <div class="form-container">
+    <h2>⭐ Review Systeem</h2>
+    <form>
+      <label for="name">Naam:</label>
+      <input type="text" id="name" placeholder="Vul je naam in">
+
+      <label for="rating">Beoordeel (1-5):</label>
+      <input type="number" id="rating" min="1" max="5" placeholder="Geef een beoordeling (1-5)">
+
+      <label for="review-text">Schrijf je review:</label>
+      <textarea id="review-text" placeholder="Schrijf hier je review..."></textarea>
+
+      <button type="button" onclick="addReview()">Verzend Review</button>
+    </form>
+  </div>
+
+  <div id="reviews" class="form-container">
+    <h3>Reviews:</h3>
+    <!-- Reviews worden hier toegevoegd -->
+  </div>
+
+  <div class="footer">
+    <p>2025 Pokéstop. Alle rechten voorbehouden.</p>
+  </div>
+
+  <script>
+    function addReview() {
+      const name = document.getElementById('name').value;
+      const rating = document.getElementById('rating').value;
+      const reviewText = document.getElementById('review-text').value;
+      
+      if (name && rating && reviewText) {
+        const reviewsContainer = document.getElementById('reviews');
+        const reviewDiv = document.createElement('div');
+        reviewDiv.innerHTML = `<div><strong>${name}</strong><br><strong>Beoordeling:</strong> ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}<p>${reviewText}</p></div>`;
+        reviewsContainer.appendChild(reviewDiv);
+        
+        // Leeg de velden na het verzenden
+        document.getElementById('name').value = '';
+        document.getElementById('rating').value = '';
+        document.getElementById('review-text').value = '';
+      }
+    }
+  </script>
 
 </body>
 </html>
