@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Memory</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: black; color: yellow; }
+        .grid { display: grid; grid-template-columns: repeat(4, 100px); gap: 10px; justify-content: center; margin-top: 50px; }
+        .card { width: 100px; height: 100px; background: yellow; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; border: 2px solid black; }
+        .card.flipped { background: black; color: yellow; }
+    </style>
+</head>
+<body>
+    <h1>Pokémon Memory</h1>
+    <div class="grid" id="gameBoard"></div>
+    
+    <script>
+        const pokemon = ['🔥', '💧', '🍃', '⚡', '🔥', '💧', '🍃', '⚡'];
+        let shuffled = pokemon.sort(() => 0.5 - Math.random());
+        let selected = [];
+        
+        function createBoard() {
+            const board = document.getElementById('gameBoard');
+            shuffled.forEach((symbol, index) => {
+                let card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.symbol = symbol;
+                card.dataset.index = index;
+                card.onclick = flipCard;
+                board.appendChild(card);
+            });
+        }
+        
+        function flipCard() {
+            if (selected.length < 2 && !this.classList.contains('flipped')) {
+                this.innerText = this.dataset.symbol;
+                this.classList.add('flipped');
+                selected.push(this);
+            }
+            if (selected.length === 2) {
+                setTimeout(checkMatch, 500);
+            }
+        }
+        
+        function checkMatch() {
+            if (selected[0].dataset.symbol === selected[1].dataset.symbol) {
+                selected.forEach(card => card.onclick = null);
+            } else {
+                selected.forEach(card => {
+                    card.innerText = '';
+                    card.classList.remove('flipped');
+                });
+            }
+            selected = [];
+        }
+        
+        createBoard();
+    </script>
+</body>
+</html>
