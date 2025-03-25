@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Wordle</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: black; color: yellow; }
+        #wordGrid { display: grid; grid-template-columns: repeat(5, 50px); gap: 5px; justify-content: center; margin-top: 20px; }
+        .letter-box { width: 50px; height: 50px; border: 2px solid yellow; font-size: 24px; text-transform: uppercase; text-align: center; line-height: 50px; }
+        .correct { background-color: green; }
+        .present { background-color: orange; }
+        .absent { background-color: gray; }
+    </style>
+</head>
+<body>
+    <h1>Pokémon Wordle</h1>
+    <p>Raad het Pokémon-woord (5 letters)!</p>
+    <div id="wordGrid"></div>
+    <input type="text" id="guessInput" maxlength="5" onkeyup="handleKey(event)">
+    <button onclick="checkGuess()">Controleer</button>
+    <button onclick="resetGame()">Reset</button>
+    <p id="message"></p>
+    
+    <script>
+        const words = ["ditto", "pidge", "mewtw", "eevee", "zubat"];
+        let answer = words[Math.floor(Math.random() * words.length)];
+        let attempts = 0;
+        
+        function createGrid() {
+            const grid = document.getElementById("wordGrid");
+            grid.innerHTML = "";
+            for (let i = 0; i < 30; i++) {
+                let box = document.createElement("div");
+                box.classList.add("letter-box");
+                grid.appendChild(box);
+            }
+        }
+        
+        function handleKey(event) {
+            if (event.key === "Enter") {
+                checkGuess();
+            }
+        }
+        
+        function checkGuess() {
+            let guess = document.getElementById("guessInput").value.toLowerCase();
+            if (guess.length !== 5) {
+                document.getElementById("message").innerText = "Voer een woord van 5 letters in!";
+                return;
+            }
+            
+            let boxes = document.querySelectorAll(".letter-box");
+            for (let i = 0; i < 5; i++) {
+                let box = boxes[attempts * 5 + i];
+                box.innerText = guess[i];
+                if (guess[i] === answer[i]) {
+                    box.classList.add("correct");
+                } else if (answer.includes(guess[i])) {
+                    box.classList.add("present");
+                } else {
+                    box.classList.add("absent");
+                }
+            }
+            
+            attempts++;
+            if (guess === answer) {
+                document.getElementById("message").innerText = "Gefeliciteerd! Je hebt het woord geraden!";
+                document.getElementById("guessInput").disabled = true;
+            } else if (attempts === 6) {
+                document.getElementById("message").innerText = "Game over! Het woord was: " + answer;
+                document.getElementById("guessInput").disabled = true;
+            }
+        }
+        
+        function resetGame() {
+            answer = words[Math.floor(Math.random() * words.length)];
+            attempts = 0;
+            document.getElementById("guessInput").value = "";
+            document.getElementById("guessInput").disabled = false;
+            document.getElementById("message").innerText = "";
+            createGrid();
+        }
+        
+        createGrid();
+    </script>
+</body>
+</html>
