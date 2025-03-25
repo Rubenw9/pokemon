@@ -1,11 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Urban Eats & Spirits</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            margin: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+        .sidebar img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 10px;
+            border: 3px solid white;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .main-image-container {
+            width: 100%;
+            border: 5px solid white;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .main-image-title {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: black;
+            padding: 5px 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 2px solid white;
+        }
+        .main-image {
+            width: 100%;
+            height: 250px;
+            background-color: yellow;
+            border-radius: 5px;
+        }
+        .minigames {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .minigame {
+            width: 120px;
+            height: 60px;
+            border: 2px solid white;
+            background-color: white;
+            color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .top10 {
+            width: 140px;
+            height: 180px;
+            border: 2px solid white;
+            background-color: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .top10-header {
+            width: 100%;
+            text-align: center;
+            border-bottom: 2px solid black;
+            padding: 5px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="sidebar">
+            <p>Pokemon Gen 1</p>
+            <img src="gen1.jpg" alt="Pokemon Gen 1">
+        </div>
+        <div class="content">
+            <div class="main-image-container">
+                <div class="main-image-title">Urban Eats & Spirits</div>
+                <div class="main-image"></div>
+            </div>
+            <div class="minigames">
+                <div class="minigame">Minigame</div>
+                <div class="minigame">Minigame</div>
+            </div>
+            <div class="top10">
+                <div class="top10-header">Top 10</div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <p>Pokemon Gen 9</p>
+            <img src="gen9.jpg" alt="Pokemon Gen 9">
+        </div>
+    </div>
 </body>
 </html>
