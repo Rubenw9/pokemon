@@ -2,6 +2,7 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/7051912af5.js" crossorigin="anonymous"></script>
   <title>🍽️ UrbanEats & Spirits Restaurant Menu</title>
   <style>
   
@@ -78,7 +79,7 @@
       text-align: center;
     }
 
-    button {
+    .medewerker-button {
       background-color: #ffcb05;
       color: #333;
       font-size: 18px;
@@ -88,7 +89,7 @@
       cursor: pointer;
     }
 
-    button:hover {
+    .medewerker-button:hover {
       background-color: #333;
       color: white;
     }
@@ -102,7 +103,68 @@
   color: white;
   text-align: center;
 }
+
+.header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:80px ;
+            background-color: #222; /* Achtergrondkleur voor zichtbaarheid */
+            padding: 0;
+            text-align: center;
+            z-index: 1000; /* Zorg ervoor dat de header boven andere elementen blijft */
+        }
+        .header h1 {
+            text-align: left;
+        }
+
+        .overons{
+            margin-top: -70px;
+            padding-bottom: 50px;
+        }
 </style>
+
+<header class="header" >
+  <h1> 🍔 UrbanEats & Spirits </h1>
+
+  <div class="overons">
+      <a href="./index.html">
+          <button class="menu-buttons">
+              <i class="fa-solid fa-house"> Home</i>
+          </button>
+      </a>
+
+      <a href="./menu.html">
+          <button class="menu-buttons">
+              <i class="fa-solid fa-burger" style="color: #000000;"> Menu</i>
+          </button>
+      </a>
+
+      <a href="./pokedex.html">
+      <button class="menu-buttons">
+      <i class="fa-solid fa-gamepad" style="color: #000000"> Pokedex</i>
+      </button>
+
+      <a href="./Personeel.html">
+          <button class="menu-buttons">
+          <i class="fa-solid fa-user" style="color: #000000"> Personeel </i>
+          </button>
+      </a>
+
+      <a href="./contact.html">
+          <button class="menu-buttons">
+              <i class="fa-solid fa-phone" style="color: #000000;"> Contact</i>
+          </button>
+      </a>
+      
+      <a href="./over_ons.html">
+          <button class="menu-buttons">
+              <i class="fa-regular fa-book-open" style="color: #000000;"> Over Ons</i>
+          </button>
+      </a>
+  </div>
+</header>
 
 <div class="footer">
   <p>2025 Pokéstop. Alle rechten voorbehouden.<p>
@@ -111,9 +173,6 @@
   </style>
 </head>
 <body>
-
-  <h1>🍔 UrbanEats & Spirits Menu</h1>
-  
 
   <div class="menu-section">
     <div class="menu-header" onclick="toggleMenu(this)">🥗 Pokébowls</div>
@@ -172,7 +231,7 @@
   </div>
 
   <div class="button-section">
-    <button type="button" onclick="showMessage()">Roep een medewerker!</button>
+    <button class="medewerker-button" type="button" onclick="showMessage()">Roep een medewerker!</button>
   </div>
 
   <script>
