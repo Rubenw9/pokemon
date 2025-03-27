@@ -2,9 +2,8 @@
         body {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            height: 0vw;
+            margin: 0px;
             background-color: #000000;
         
         }
@@ -22,6 +21,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center;
             background-color: #ffcb05;
+            margin-top: 100px;
         }
         .card img {
             width: 100%;
@@ -50,5 +50,7 @@
             color: black;
         }
 
-
-        
+        .header{
+            position: absolute;
+            color: rgb(255, 255, 255);
+        }
