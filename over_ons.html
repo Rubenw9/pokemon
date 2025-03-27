@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7051912af5.js" crossorigin="anonymous"></script>
     <title>Over Ons</title>
     <style>
         body {
@@ -13,11 +14,14 @@
             padding: 0;
             display: flex;
             justify-content: center;
+            align-items: center;
+            padding-top: 150px; /* Zorgt ervoor dat de inhoud niet onder de header begint */
+            flex-direction: column;
         }
         .container {
             width: 90%;
             max-width: 800px;
-            padding: 20px;
+            padding-bottom: 40px;
         }
         h1 {
             text-align: center;
@@ -30,9 +34,69 @@
             background-color: #222;
             border-radius: 5px;
         }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height:80px ;
+            background-color: #222; /* Achtergrondkleur voor zichtbaarheid */
+            padding: 0;
+            text-align: center;
+            z-index: 1000; /* Zorg ervoor dat de header boven andere elementen blijft */
+        }
+        .header h1 {
+            text-align: left;
+        }
+
+        .overons{
+            margin-top: -50px;
+        }
     </style>
 </head>
 <body>
+    <header class="header" >
+        <h1> UrbanEats & Spirits </h1>
+
+        <div class="overons">
+            <a href="./index.html">
+                <button>
+                    <i class="fa-solid fa-house"> Home</i>
+                </button>
+            </a>
+
+            <a href="./menu.html">
+                <button>
+                    <i class="fa-solid fa-burger" style="color: #000000;"> Menu</i>
+                </button>
+            </a>
+
+            <a href="./pokedex.html">
+            <button>
+            <i class="fa-solid fa-gamepad" style="color: #000000"> Pokedex</i>
+            </button>
+
+            <a href="./Personeel.html">
+                <button>
+                <i class="fa-solid fa-user" style="color: #000000"> Personeel </i>
+                </button>
+            </a>
+
+            <a href="./contact.html">
+                <button>
+                    <i class="fa-solid fa-phone" style="color: #000000;"> Contact</i>
+                </button>
+            </a>
+            
+            <a href="./over_ons.html">
+                <button>
+                    <i class="fa-regular fa-book-open" style="color: #000000;"> Over Ons</i>
+                </button>
+            </a>
+        </div>
+    </header>
+    
     <div class="container">
         <h1>Over Ons</h1>
         
