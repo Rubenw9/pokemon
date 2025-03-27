@@ -54,8 +54,9 @@
             position: absolute;
             color: rgb(255, 255, 255);
         }
-
-        .top10 p{
+        
+        .top10 {
             margin: 0px;
             padding: 0  ;
+            overflow: auto;
         }
