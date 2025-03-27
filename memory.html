@@ -9,21 +9,30 @@
         .grid { display: grid; grid-template-columns: repeat(4, 100px); gap: 10px; justify-content: center; margin-top: 50px; }
         .card { width: 100px; height: 100px; background: yellow; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; border: 2px solid black; }
         .card.flipped { background: black; color: yellow; }
-        .home-button { background-color: yellow; color: black; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); }
+        .home-button, .reset-button { background-color: yellow; color: black; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        .home-button { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); }
+        .reset-button { margin-top: 20px; background-color: yellow; color: black; padding: 10px 20px; cursor: pointer; font-size: 16px; }
     </style>
 </head>
 <body>
     <h1>Pokémon Memory</h1>
     <div class="grid" id="gameBoard"></div>
-    <button class="home-button" onclick="window.location.href='index.html'">Terug naar Home</button>
     
+    <!-- Reset Button below the Memory grid -->
+    <button class="reset-button" onclick="resetGame()">Reset Spel</button>
+
+    <button class="home-button" onclick="window.location.href='index.html'">Terug naar Home</button>
+
     <script>
         const pokemon = ['🔥', '💧', '🍃', '⚡', '🔥', '💧', '🍃', '⚡'];
-        let shuffled = pokemon.sort(() => 0.5 - Math.random());
-        let selected = [];
-        
+        let shuffled, selected;
+
         function createBoard() {
             const board = document.getElementById('gameBoard');
+            board.innerHTML = '';  // Verwijder oude kaarten
+            shuffled = pokemon.sort(() => 0.5 - Math.random()); // Schud de kaarten
+            selected = [];
+
             shuffled.forEach((symbol, index) => {
                 let card = document.createElement('div');
                 card.classList.add('card');
@@ -33,7 +42,7 @@
                 board.appendChild(card);
             });
         }
-        
+
         function flipCard() {
             if (selected.length < 2 && !this.classList.contains('flipped')) {
                 this.innerText = this.dataset.symbol;
@@ -44,10 +53,10 @@
                 setTimeout(checkMatch, 500);
             }
         }
-        
+
         function checkMatch() {
             if (selected[0].dataset.symbol === selected[1].dataset.symbol) {
-                selected.forEach(card => card.onclick = null);
+                selected.forEach(card => card.onclick = null); // Verwijder de clickfunctie bij een match
             } else {
                 selected.forEach(card => {
                     card.innerText = '';
@@ -56,28 +65,31 @@
             }
             selected = [];
         }
-        
+
+        // Reset het spel naar de oorspronkelijke staat
+        function resetGame() {
+            createBoard();  // Genereer het bord opnieuw
+        }
+
+        // Start het spel bij het laden van de pagina
         createBoard();
     </script>
 
-<div class="footer">
-    <p>2025 Urban Eats & Spirits. Alle rechten voorbehouden.</p>
-  </div>
+    <div class="footer">
+        <p>2025 Urban Eats & Spirits. Alle rechten voorbehouden.</p>
+    </div>
 
-
-<style>
-
-.footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-
-</style>
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </body>
 </html>
