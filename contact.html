@@ -2,6 +2,8 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <script src="https://kit.fontawesome.com/7051912af5.js" crossorigin="anonymous"></script>
+
   <title>Contact - Urban Eats & Spirits</title>
   <style>
     body {
@@ -11,7 +13,7 @@
       color: #333;
     }
 
-    .form-container {
+    .form-container1, .form-container2, .form-container3, .form-container4 {
       max-width: 600px;
       margin: 30px auto;
       background-color: #ffcb05;
@@ -57,7 +59,7 @@
       min-height: 100px;
     }
 
-    button {
+    .contact-button {
       background-color: #000000;
       color: white;
       font-size: 18px;
@@ -70,7 +72,7 @@
       margin-top: 10px;
     }
 
-    button:hover {
+    .contact-button:hover {
       background-color: #222222;
     }
 
@@ -84,11 +86,81 @@
       text-align: center;
       padding: 10px;
     }
+
+    .title{
+      color: #e60012;
+    }
   </style>
 </head>
 <body>
+  <style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:80px ;
+    background-color: #222; /* Achtergrondkleur voor zichtbaarheid */
+    padding: 0;
+    text-align: center;
+    z-index: 1000; /* Zorg ervoor dat de header boven andere elementen blijft */
+}
+.header h1 {
+    text-align: left;
+}
 
-  <div class="form-container">
+.overons{
+    margin-top: -50px;
+}
+
+.form-container1{
+  margin-top: 100px;
+}
+</style>
+</head>
+<body>
+<header class="header" >
+<h1 class="title"> UrbanEats & Spirits </h1>
+
+<div class="overons">
+    <a href="./index.html">
+        <button>
+            <i class="fa-solid fa-house"> Home</i>
+        </button>
+    </a>
+
+    <a href="./menu.html">
+        <button>
+            <i class="fa-solid fa-burger" style="color: #000000;"> Menu</i>
+        </button>
+    </a>
+
+    <a href="./pokedex.html">
+    <button>
+    <i class="fa-solid fa-gamepad" style="color: #000000"> Pokedex</i>
+    </button>
+
+    <a href="./Personeel.html">
+        <button>
+        <i class="fa-solid fa-user" style="color: #000000"> Personeel </i>
+        </button>
+    </a>
+
+    <a href="./contact.html">
+        <button>
+            <i class="fa-solid fa-phone" style="color: #000000;"> Contact</i>
+        </button>
+    </a>
+    
+    <a href="./over_ons.html">
+        <button>
+            <i class="fa-regular fa-book-open" style="color: #000000;"> Over Ons</i>
+        </button>
+    </a>
+</div>
+</header>
+
+  <div class="form-container1">
     <h1>📍 Contactgegevens</h1>
     <p><strong>Adres:</strong> Pokéstraat 123, 1010 AB Maastricht</p>
     <p><strong>E-mail:</strong> info@urbaneats.nl</p>
@@ -96,7 +168,7 @@
     <p><strong>Openingstijden:</strong> Ma t/m Zo - 12:00 tot 21:00</p>
   </div>
 
-  <div class="form-container">
+  <div class="form-container2">
     <h2>👤 Contactformulier</h2>
     <form>
       <label for="fname">E-mail:</label>
@@ -105,11 +177,11 @@
       <label for="lname">Bericht:</label>
       <input type="text" id="lname" name="lname" placeholder="Groen en geel zijn mooie kleuren!">
 
-      <button type="button" onclick="alert('Je formulier is verzonden!')">Verzend</button>
+      <button class="contact-button" type="button" onclick="alert('Je formulier is verzonden!')">Verzend</button>
     </form>
   </div>
 
-  <div class="form-container">
+  <div class="form-container3">
     <h2>⭐ Review Systeem</h2>
     <form>
       <label for="name">Naam:</label>
@@ -121,11 +193,11 @@
       <label for="review-text">Schrijf je review:</label>
       <textarea id="review-text" placeholder="Schrijf hier je review..."></textarea>
 
-      <button type="button" onclick="addReview()">Verzend Review</button>
+      <button class="contact-button" type="button" onclick="addReview()">Verzend Review</button>
     </form>
   </div>
 
-  <div id="reviews" class="form-container">
+  <div id="reviews" class="form-container4">
     <h3>Reviews:</h3>
   </div>
 
