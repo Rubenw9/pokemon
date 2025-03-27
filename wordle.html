@@ -11,21 +11,23 @@
         .correct { background-color: green; }
         .present { background-color: orange; }
         .absent { background-color: gray; }
+        .home-button { background-color: yellow; color: black; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); }
     </style>
 </head>
 <body>
     <h1>Pokémon Wordle</h1>
     <p>Raad het Pokémon-woord (5 letters)!</p>
     <div id="wordGrid"></div>
-    <input type="text" id="guessInput" maxlength="5" onkeyup="handleKey(event)">
     <button onclick="checkGuess()">Controleer</button>
     <button onclick="resetGame()">Reset</button>
     <p id="message"></p>
+    <button class="home-button" onclick="window.location.href='index.html'">Terug naar Home</button>
     
     <script>
         const words = ["ditto", "pidge", "mewtw", "eevee", "zubat"];
         let answer = words[Math.floor(Math.random() * words.length)];
         let attempts = 0;
+        let currentGuess = "";
         
         function createGrid() {
             const grid = document.getElementById("wordGrid");
@@ -37,52 +39,83 @@
             }
         }
         
-        function handleKey(event) {
-            if (event.key === "Enter") {
+        document.addEventListener("keydown", function(event) {
+            if (/^[a-zA-Z]$/.test(event.key) && currentGuess.length < 5) {
+                currentGuess += event.key.toLowerCase();
+                updateGrid();
+            } else if (event.key === "Backspace" && currentGuess.length > 0) {
+                currentGuess = currentGuess.slice(0, -1);
+                updateGrid();
+            } else if (event.key === "Enter" && currentGuess.length === 5) {
                 checkGuess();
+            }
+        });
+        
+        function updateGrid() {
+            let boxes = document.querySelectorAll(".letter-box");
+            for (let i = 0; i < 5; i++) {
+                let box = boxes[attempts * 5 + i];
+                box.innerText = currentGuess[i] || "";
             }
         }
         
         function checkGuess() {
-            let guess = document.getElementById("guessInput").value.toLowerCase();
-            if (guess.length !== 5) {
-                document.getElementById("message").innerText = "Voer een woord van 5 letters in!";
-                return;
-            }
+            if (currentGuess.length !== 5) return;
             
             let boxes = document.querySelectorAll(".letter-box");
             for (let i = 0; i < 5; i++) {
                 let box = boxes[attempts * 5 + i];
-                box.innerText = guess[i];
-                if (guess[i] === answer[i]) {
+                if (currentGuess[i] === answer[i]) {
                     box.classList.add("correct");
-                } else if (answer.includes(guess[i])) {
+                } else if (answer.includes(currentGuess[i])) {
                     box.classList.add("present");
                 } else {
                     box.classList.add("absent");
                 }
             }
             
-            attempts++;
-            if (guess === answer) {
+            if (currentGuess === answer) {
                 document.getElementById("message").innerText = "Gefeliciteerd! Je hebt het woord geraden!";
-                document.getElementById("guessInput").disabled = true;
-            } else if (attempts === 6) {
+                document.removeEventListener("keydown", handleKey);
+            } else if (++attempts === 6) {
                 document.getElementById("message").innerText = "Game over! Het woord was: " + answer;
-                document.getElementById("guessInput").disabled = true;
+                document.removeEventListener("keydown", handleKey);
             }
+            
+            currentGuess = "";
         }
         
         function resetGame() {
             answer = words[Math.floor(Math.random() * words.length)];
             attempts = 0;
-            document.getElementById("guessInput").value = "";
-            document.getElementById("guessInput").disabled = false;
+            currentGuess = "";
             document.getElementById("message").innerText = "";
             createGrid();
         }
         
         createGrid();
     </script>
+
+
+<div class="footer">
+    <p>2025 Urban Eats & Spirits. Alle rechten voorbehouden.</p>
+  </div>
+
+
+<style>
+
+.footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+</style>
+
 </body>
 </html>
